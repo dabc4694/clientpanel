@@ -27,6 +27,15 @@ export class ClientDetailsComponent implements OnInit {
     // GET Id
     this.id = this.route.snapshot.params['id'];
     console.log(this.id);
+    this.clientService.getClient(this.id).subscribe(
+      client => {
+        if(client.balance > 0){
+          this.hasBalance = true;
+        }
+        this.client = client;
+        console.log(this.client);
+      }
+    );
   }
 
 }
