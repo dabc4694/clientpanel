@@ -1,4 +1,13 @@
-<table *ngIf="clients?.length > 0; else noClients"class="table table-striped">
+<div class="row">
+  <div class="col-md-6">
+    <h2><i class="fa fa-users"></i> Clients</h2>
+  </div>
+  <div class="col-md-6">
+    <h5 class="pull-right text-muted">Total Owed: {{totalOwed | currency:"USD":true}}</h5>
+  </div>
+</div>
+
+<table *ngIf="clients?.length > 0; else noClients" class="table table-striped">
 
   <thead class="thead-inverse">
     <tr>
@@ -14,7 +23,7 @@
       <td>{{client.$key}}</td>
       <td>{{client.firstName}} {{client.lastName}}</td>
       <td>{{client.email}}</td>
-      <td>{{client.balance}}</td>
+      <td>{{client.balance | currency:"USD":true}}</td>
       <td><a href="" class="btn btn-secondary btn-sm"><i class="fa fa-arrow-circle-o-right"></i> Details</a></td>
     </tr>
   </tbody>
