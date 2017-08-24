@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-
+// Component imports
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClientsComponent } from './components/clients/clients.component';
@@ -19,7 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
+// Service imports
+import { ClientService } from './services/client.service'
 const appRoutes: Routes = [
   { path: "", component: DashboardComponent },
   { path: "login", component: LoginComponent },
@@ -56,7 +57,8 @@ export const firebaseConfig = {
   ],
   providers: [
     AngularFireAuth,
-    AngularFireDatabase
+    AngularFireDatabase,
+    ClientService
   ],
   bootstrap: [AppComponent]
 })
