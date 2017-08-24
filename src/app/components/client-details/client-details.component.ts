@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../../services/client.service';
+import { Client } from '../models/client';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-client-details',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientDetailsComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  client: Client;
+  hasBalance: boolean = false;
+  showBalanceUpdateInput: boolean = false;
+
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private flashMEssagesService: FlashMessagesService
+  ) { }
 
   ngOnInit() {
+    // GET Id
+    this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
   }
 
 }
