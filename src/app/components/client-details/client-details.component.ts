@@ -47,4 +47,15 @@ export class ClientDetailsComponent implements OnInit {
     this.router.navigate(['/client/'+this.id]);
   }
 
+  onDeleteClick(){
+    if(confirm("Are you sure to delete?")){
+      this.clientService.deleteClient(this.id);
+      this.flashMEssagesService.show('Client Deleted!', {
+      cssClass: 'alert-success',
+      timeout: 5000
+    });
+    this.router.navigate(['/']);
+    }
+  }
+
 }
